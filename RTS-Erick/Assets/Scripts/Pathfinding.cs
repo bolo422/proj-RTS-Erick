@@ -5,6 +5,7 @@ using UnityEngine;
 public class Pathfinding : MonoBehaviour
 {
     public Grid grid; //referencia do script como grid
+    public UnityMovement Unit;
     public Transform StartPosition; //posição inicial do pathfinding no mundo
     public Transform TargetPosition; //objetivo do pathfinding no mundo
 
@@ -18,7 +19,10 @@ public class Pathfinding : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        FindPath(StartPosition.position, TargetPosition.position);
+        if (Input.GetMouseButtonDown(1))
+        {
+            FindPath(StartPosition.position, TargetPosition.position);
+        }
     }
 
     void FindPath(Vector3 a_StartPos, Vector3 a_TargetPos)
@@ -88,6 +92,7 @@ public class Pathfinding : MonoBehaviour
             FinalPath.Reverse(); //reverter a lista
 
             grid.FinalPath = FinalPath; //enviar o resultado para o grid desenhar
+           // Unit.Path = FinalPath;
         }
 
     }
